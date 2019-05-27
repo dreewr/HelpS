@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.ProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:titleTextColor="@color/white"
+            app:theme="@style/ToolbarColoredBackArrow"
+            android:background="@color/colorPrimary"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            android:contentInsetRight="0dp"
+            android:contentInsetEnd="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="Perfil"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          >
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorPrimary">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_profile"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#6f6f6f"
+            android:id="@+id/profile_pic"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="#fff"
+            android:layout_marginTop="20dp"
+            android:text="David taylor"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:id="@+id/prof_Name"/>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:rating="4.5"
+            android:layout_marginTop="5dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:layout_gravity="center_horizontal"
+            android:theme="@style/RatingBar"/>
+
+
+        <Button
+            android:id="@+id/btnLogOut"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:text="sair"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Quem sou eu?"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:maxLines="3"
+        android:textColor="#9b9b9b"
+        android:theme="@style/SwitchCompat"
+        android:layout_marginBottom="10dp"
+        android:hint="Escreva aqui"/>
+-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/viewColor"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_toLeftOf="@id/switch1"
+            android:text="Outros usuários podem me ad..."
+            android:textSize="20sp"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:theme="@style/SwitchCompat"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/viewColor"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_toLeftOf="@id/switch2"
+            android:text="Receber Alertas?"
+            android:textSize="20sp"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:theme="@style/SwitchCompat"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="10"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnMyLocation"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="40dp"
+            android:textSize="12sp"
+            android:text="Minha localização"/>
+        <Button
+
+            android:id="@+id/btnMedicianRedius"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="40dp"
+            android:textSize="12sp"
+            android:text="Raio De Medicamento"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnaddCell"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="40dp"
+            android:textSize="12sp"
+            android:text="Adicionar celular"/>
+        <Button
+            android:id="@+id/btnAddCpf"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="40dp"
+            android:textSize="12sp"
+            android:text="Adicionar CPF"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            />
+        <Button
+
+            android:id="@+id/btnUpgrade"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:textSize="12sp"
+            android:text="Atualize agora"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnSave"
+        android:onClick="nextActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:text="SALVAR"/>
+
+</LinearLayout>
+      </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

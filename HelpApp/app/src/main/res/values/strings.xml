@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">helps</string>
+
+    <string name="facebook_id">299707630945339</string>
+    <string name="fb_login_protocol_scheme">fb299707630945339</string>
+
+    <!-- Date Util -->
+    <string name="date_util_term_less">less than</string>
+    <string name="date_util_term_a">a</string>
+    <string name="date_util_term_an">an</string>
+
+    <string name="date_util_unit_second">s</string>
+    <string name="date_util_unit_seconds">s</string>
+    <string name="date_util_unit_minute">min</string>
+    <string name="date_util_unit_minutes">mins</string>
+    <string name="date_util_unit_hour">h</string>
+    <string name="date_util_unit_hours">h</string>
+    <string name="date_util_unit_day">d</string>
+    <string name="date_util_unit_days">d</string>
+    <string name="date_util_unit_month">month</string>
+    <string name="date_util_unit_months">m</string>
+    <string name="date_util_unit_year">y</string>
+    <string name="date_util_unit_years">y</string>
+
+
+    <string name="website_url1">http:waghera waghera</string>
+
+    <!--<string name="date_util_prefix_lt">less than a</string>-->
+    <!--<string name="date_util_prefix_about">about</string>-->
+    <!--<string name="date_util_prefix_over">over</string>-->
+    <!--<string name="date_util_prefix_almost">almost</string>-->
+
+    <string name="date_util_suffix">ago</string>
+    <string name="title_activity_tabbed_search">TabbedSearchActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string-array name="opt_array">
+        <item>Comprimido</item>
+        <item>Dose</item>
+        <item>ml</item>
+
+    </string-array>
+
+
+    <string name="BottomNote">Continuar significa que você leu e aceito nossos <b>Termos e Condições- Política de Privacidade.</b></string>
+    <string name="google_map_api_key">AIzaSyCCbVsu2MmoHkY3-U8nwChdmM4KKtodmlo</string>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string name="barCodeTItle">Código de Barras digitalização</string>
+    <string name="title_activity_individual_chat">IndividualChatActivity</string>
+    <string name="compartilhar_pontos">compartilhar pontos</string>
+    <string name="insira_os_pontos">Insira os pontos</string>
+    <string name="dose">Dose</string>
+
+</resources>

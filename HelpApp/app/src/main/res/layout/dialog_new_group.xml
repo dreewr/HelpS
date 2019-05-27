@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|left"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:text="Novo grupo"
+        android:paddingLeft="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|left"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="Nome do grupo"
+        android:paddingLeft="10dp"/>
+    <EditText
+        android:id="@+id/groupNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="nome do grupo"
+        android:textColor="#000"
+        android:textSize="12sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_backgroun"
+        />
+    <EditText
+        android:id="@+id/groupDescritionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="descrição do grupo"
+        android:textColor="#000"
+        android:textSize="12sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_backgroun"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|left"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="Selecione usuários para adicionar"
+        android:paddingLeft="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/memberRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_ok_dialog_group"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="OK"
+            android:textColor="#fff"
+            android:background="@drawable/orange_button"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

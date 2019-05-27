@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    tools:context=".Activities.EditMedicanActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:titleTextColor="@color/white"
+            app:theme="@style/ToolbarColoredBackArrow"
+            android:background="@color/logoColor"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="Editar medicina"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:textSize="12sp"
+        android:text="Campos marcados com * são obrigatórios"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:hint="*Adicionar medicamento"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_inputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/editTextDose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:hint="@string/dose"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/editTextMg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:hint="Mg"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/editTextDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:hint="Descrição: Princípio Ativo (opcional)"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:theme="@style/TextLabel"
+                    android:orientation="horizontal"
+                    android:layout_weight="6"
+                    >
+
+
+
+                    <EditText
+                        android:id="@+id/editTextValidity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:enabled="false"
+                        android:hint="MM/YYYY"
+                        android:textSize="16sp"
+
+                        />
+
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:id="@+id/icon_calnder"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/icon_calender"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/editTextActivePr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:hint="Apresentação / Quantidade"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+
+                    android:theme="@style/TextLabel"
+                    android:orientation="horizontal"
+                    android:layout_weight="6"
+                    >
+
+
+
+                    <EditText
+                        android:id="@+id/editTextFoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:hint="Envie fotos de toda a caixa"
+                        android:textColor="@color/black"
+                        android:editable="false"
+                        android:textSize="16sp"
+
+                        />
+
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:id="@+id/image_came"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/image_camera"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="9"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        android:id="@+id/editTextEAN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:hint="EAN: Códigode Barra(opcional)"
+                        android:inputType="number"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:id="@+id/iconSCannerAdmedican"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp"
+                    app:srcCompat="@drawable/icon_scanner"
+                    android:layout_gravity="right|bottom"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="9">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="4"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        android:id="@+id/editTextIndicationdays"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:hint="Indicação Dias"
+                        android:textSize="16sp"
+                        android:maxLength="2"
+                        android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <EditText
+
+                    android:layout_width="0dp"
+                    android:gravity="center|bottom"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:hint="/"
+                    android:paddingBottom="10dp"
+                    android:background="@null"
+
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="4"
+
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        android:id="@+id/editTextIndicationhours"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:maxLength="3"
+                        android:inputType="number"
+                        android:hint="Indicação Horas"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/editTextCompany"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:hint="Fabricante/laboratório"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:theme="@style/TextLabel"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/editTextQuantDose"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:inputType="number"
+                        android:hint="Quantidade Disponível"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+              <!--  <Spinner
+                    android:layout_weight="1"
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="16sp"
+
+                    android:dropDownWidth="match_parent"
+                    android:entries="@array/opt_array"
+                    />
+-->
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/btnShare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/colorPrimary"
+                android:text="Atualizar"
+                android:textColor="@color/white"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>

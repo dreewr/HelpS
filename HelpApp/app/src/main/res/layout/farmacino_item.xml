@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:gravity="center"
+        android:id="@+id/farm_item_layout">
+
+        <ImageView
+            android:id="@+id/imgPicture"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            app:srcCompat="@drawable/medicine"
+            android:scaleType="fitXY"
+            android:layout_weight="1.2"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:paddingLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diproyne"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtTime1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6 out of 6 hours"
+                android:layout_marginTop="3dp"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/medican_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description Here"
+                android:paddingRight="5dp"
+                android:lines="3"/>
+
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Validade: "
+                android:textColor="@color/black"
+                android:textStyle="italic"
+                android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txtExpire"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="expire"
+                    android:textStyle="italic"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutDoar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/ic_doar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="12sp"
+                    android:text="Doar"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

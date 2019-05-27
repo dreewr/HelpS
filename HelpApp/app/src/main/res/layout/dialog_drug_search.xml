@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:minHeight="120dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|left"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:text="Selecione raio para pesquisar medicamento"
+        android:paddingLeft="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/edit_backgroun">
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"></Spinner></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="right"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_ok_dilog_radius"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="OK"
+            android:textColor="#fff"
+            android:background="@drawable/orange_button"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

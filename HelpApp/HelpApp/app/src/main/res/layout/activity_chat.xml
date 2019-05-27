@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    tools:context=".ChatActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:theme="@style/AppTheme"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:background="@color/colorPrimaryDark">
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:onClick="sendBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackgroundBorderless"
+                    android:paddingRight="15dp"
+                    android:src="@drawable/ic_back"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Ethan"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <ListView
+            android:id="@+id/chat_list_view"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:divider="@null"
+            android:layout_width="match_parent"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_marginBottom="50dp"
+            android:layout_height="match_parent"></ListView>
+
+
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btnAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/view"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/orange_button"
+        android:text="ACEITAR ENTREGA"
+        android:textColor="@color/white"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"/>
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_above="@id/rlSend"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/top_shadow_gradient" />
+
+        <RelativeLayout
+            android:id="@+id/rlSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/send_layout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            >
+
+
+            <EditText
+                android:id="@+id/edtMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type your message here"
+                android:textSize="14sp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/black"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:scrollHorizontally="false"
+                android:layout_centerVertical="true"
+                android:singleLine="false"
+                android:layout_toLeftOf="@id/txtSend"
+                android:textCursorDrawable="@null"
+                android:backgroundTint="@android:color/transparent" />
+
+
+            <TextView
+                android:id="@+id/txtSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/black"
+                android:text="Mandar"
+                android:padding="10dp"
+                android:textStyle="italic"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+
+
+</RelativeLayout>

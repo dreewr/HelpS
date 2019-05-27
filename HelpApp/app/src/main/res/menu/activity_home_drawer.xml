@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group1">
+
+        <item
+            android:id="@+id/nav_inbox"
+            android:title="Inbox" />
+
+    </group>
+
+
+
+        <group android:checkableBehavior="single"
+            android:id="@+id/group2">
+
+            <item
+                android:id="@+id/nav_scheduled"
+                android:title="Scheduled"/>
+
+            <item
+                android:id="@+id/nav_blocking"
+                android:title="Blacklist"/>
+
+            <item
+                android:id="@+id/nav_auto"
+                android:title="Auto Send"/>
+
+            <item
+                android:id="@+id/nav_template"
+                android:title="Templates"/>
+
+
+
+        </group>
+
+
+<group android:checkableBehavior="single"
+    android:id="@+id/group3">
+            <item
+                android:id="@+id/nav_settings"
+                android:title="Settings" />
+
+            <item
+                android:id="@+id/nav_help"
+                android:title="Help &amp; Feedback" />
+
+</group>
+
+
+</menu>

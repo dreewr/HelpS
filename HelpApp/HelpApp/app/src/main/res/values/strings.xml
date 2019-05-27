@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">helps</string>
+
+
+    <!-- Date Util -->
+    <string name="date_util_term_less">less than</string>
+    <string name="date_util_term_a">a</string>
+    <string name="date_util_term_an">an</string>
+
+    <string name="date_util_unit_second">s</string>
+    <string name="date_util_unit_seconds">s</string>
+    <string name="date_util_unit_minute">min</string>
+    <string name="date_util_unit_minutes">mins</string>
+    <string name="date_util_unit_hour">h</string>
+    <string name="date_util_unit_hours">h</string>
+    <string name="date_util_unit_day">d</string>
+    <string name="date_util_unit_days">d</string>
+    <string name="date_util_unit_month">month</string>
+    <string name="date_util_unit_months">m</string>
+    <string name="date_util_unit_year">y</string>
+    <string name="date_util_unit_years">y</string>
+
+    <!--<string name="date_util_prefix_lt">less than a</string>-->
+    <!--<string name="date_util_prefix_about">about</string>-->
+    <!--<string name="date_util_prefix_over">over</string>-->
+    <!--<string name="date_util_prefix_almost">almost</string>-->
+
+    <string name="date_util_suffix">ago</string>
+
+</resources>

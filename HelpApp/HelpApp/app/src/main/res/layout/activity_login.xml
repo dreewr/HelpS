@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:src="@drawable/login_header"
+        android:scaleType="fitXY"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="Continuar Com"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FACEBOOK"
+        android:onClick="fbClicked"
+        android:textColor="@color/white"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/facebook_button"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:text="or"
+        android:textSize="18sp"/>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="25dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#fe7b21"
+            android:onClick="fbClicked"
+            android:text="Cadastre-se com e-mail"
+            android:background="@android:color/transparent"/>
+
+
+    </android.support.v7.widget.CardView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="iniciar sessao"
+            android:gravity="center_horizontal"
+            android:textColor="#fe7b21"
+            android:textAllCaps="true"
+            android:layout_above="@id/txtTerms"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"/>
+
+
+        <TextView
+            android:id="@+id/txtTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text=" "
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"/>
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

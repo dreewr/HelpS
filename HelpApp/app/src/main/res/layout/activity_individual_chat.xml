@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.individualChatActivity">
+    <LinearLayout
+        android:id="@+id/idddddUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:theme="@style/AppTheme"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:background="@color/colorPrimaryDark">
+
+                <ImageView
+                    android:id="@+id/imgBackUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackgroundBorderless"
+                    android:paddingRight="15dp"
+                    app:srcCompat="@drawable/ic_back"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtNameUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Gustavo"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/idddddUser"
+        android:id="@+id/msgRecyclerUser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rlSendUser">
+    </androidx.recyclerview.widget.RecyclerView>
+    <Button
+        android:id="@+id/btnAcceptUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/view"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/orange_button"
+        android:text="ACEITAR ENTREGA"
+        android:textColor="@color/white"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"/>
+
+
+    <View
+        android:id="@+id/viewUser"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_above="@id/rlSend"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/top_shadow_gradient" />
+
+
+    <RelativeLayout
+        android:id="@+id/rlSendUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_background"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+
+        >
+        <EditText
+            android:id="@+id/edtMsgUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite sua mensagem aqui"
+            android:textSize="14sp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/black"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_centerVertical="true"
+            android:singleLine="false"
+            android:layout_toLeftOf="@id/txtSendUser"
+            android:textCursorDrawable="@null"
+            />
+
+
+        <TextView
+            android:id="@+id/txtSendUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="0dp"
+            android:padding="10dp"
+            android:text="Enviar"
+            android:textColor="@color/black"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

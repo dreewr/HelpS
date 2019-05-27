@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:id="@+id/parentLayout"
+    android:paddingTop="5dp">
+
+    <TextView
+        android:id="@+id/txtDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text="Today"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgPic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/txtDay"
+        android:src="#2a8cfb"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_below="@id/txtDay"
+        android:layout_toLeftOf="@id/imgPic"
+        android:backgroundTint="#2a8cfb"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/icon_chat_user1"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:id="@+id/chat_company_reply_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/message_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                style="@style/chat_text_message_style"
+                android:paddingLeft="5dp"
+                android:autoLink="web"
+                android:maxWidth="280dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/time_text"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                style="@style/chat_timings"
+                android:textStyle="bold"
+                android:paddingRight="8dp"
+                android:textColor="@color/white"
+                android:text="17:10" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

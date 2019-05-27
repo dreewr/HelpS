@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ebmacs.helpapp.Activities.UpgradeTOPRemiumActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ToolbarTheme"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="18sp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--android:text="Atualizar para o Premium"/>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center|left"
+        android:paddingLeft="10dp"
+        android:text="Insira pontos para comprar"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_backgroun"
+        android:gravity="center|left"
+        android:hint="20"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center|left"
+        android:paddingLeft="10dp"
+        android:text=" Selecione o seu tipo de cartão"
+        android:textColor="#000"
+        android:textSize="18sp" />
+    <!--<TextView-->
+    <!--android:id="@+id/payPalTxt"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:gravity="center"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:textSize="18sp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:background="#2b2b7b"-->
+    <!--android:text="PayPal"/>-->
+    <!--<TextView-->
+    <!--android:id="@+id/stripeTxt"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:gravity="center"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:textSize="18sp"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:background="#2b2b7b"-->
+    <!--android:text="Stripe"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_ok_upgrade"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/orange_button"
+            android:text="OK"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+</LinearLayout>
+    </ScrollView>
