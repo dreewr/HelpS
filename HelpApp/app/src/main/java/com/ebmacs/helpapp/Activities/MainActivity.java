@@ -10,21 +10,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.viewpager.widget.ViewPager;
 
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 
+import com.ebmacs.helpapp.Models.Medicine;
 import com.ebmacs.helpapp.MyShardPrefernces;
 import com.ebmacs.helpapp.R;
 import com.ebmacs.helpapp.Adapters.TutorialAdapter;
+import com.ebmacs.helpapp.Repository.Repository;
+import com.ebmacs.helpapp.Repository.Resource;
 import com.ebmacs.helpapp.Services.MyFirebaseInstanceService;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,9 +59,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("REFRESHED_TOKEN", MODE_PRIVATE);
         String restoredText = prefs.getString("mToken", null);
 
+        apiTest();
 
     }
 
+    Repository repository = new Repository();
+    private MutableLiveData<Resource<List<Medicine>>> medicines= new MutableLiveData<>();
+    private void apiTest(){
+        medicines =  repository.getMedicine("7891058001155");
+    }
 
     private void initializeViews() {
         indicator = findViewById(R.id.indicator);
