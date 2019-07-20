@@ -57,43 +57,50 @@
 
         <activity android:name=".User.LoginActivity">
             <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<action android:name="android.intent.action.VIEW" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".Activities.MainActivity">
+            <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
                 <!--<action android:name="android.intent.action.VIEW" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".Activities.MainActivity" >
+        <activity android:name=".Activities.ProfileActivity" />
+        <activity
+            android:name=".Activities.MyFarmacinhaActivity"
+            android:label="Minha Farmacinha" />
+
+        <activity android:name=".Activities.AddMedicineActivity" >
             <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-
-    </activity>
-    <activity android:name=".Activities.ProfileActivity" />
-    <activity
-        android:name=".Activities.MyFarmacinhaActivity"
-        android:label="Minha Farmacinha" />
-    <activity android:name=".Activities.AddMedicineActivity" />
-    <activity android:name=".Chat.InboxActivity" />
-    <activity android:name=".Chat.ChatActivity" />
-    <activity android:name=".Activities.MyScoreActivity" />
-    <activity android:name=".Activities.FriendsActivity" />
-    <activity android:name=".Activities.ShowMedicanDetailActivity" />
-    <activity android:name=".Activities.MedicineOwnerActivity" />
-    <activity android:name=".Activities.SplashActivity" />
-    <activity android:name=".User.SignUpActivity" />
-    <!--
-         The API key for Google Maps-based APIs is defined as a string resource.
-         (See the file "res/values/google_maps_api.xml").
-         Note that the API key is linked to the encryption key used to sign the APK.
-         You need a different API key for each encryption key, including the release key that is used to
-         sign the APK for publishing.
-         You can define the keys for the debug and release targets in src/debug/ and src/release/.
-    -->
+        <activity android:name=".Chat.InboxActivity" />
+        <activity android:name=".Chat.ChatActivity" />
+        <activity android:name=".Activities.MyScoreActivity" />
+        <activity android:name=".Activities.FriendsActivity" />
+        <activity android:name=".Activities.ShowMedicanDetailActivity" />
+        <activity android:name=".Activities.MedicineOwnerActivity" />
+        <activity android:name=".Activities.SplashActivity" />
+        <activity android:name=".User.SignUpActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
         <!--
             <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -110,7 +117,7 @@
         <activity android:name=".Activities.EditMedicanActivity" />
         <activity android:name=".Activities.SHowDetailNearbyDrugsActivity" />
         <activity android:name=".Activities.UpgradeTOPRemiumActivity" />
-        <activity android:name=".Activities.individualChatActivity"/>
+        <activity android:name=".Activities.individualChatActivity" />
 
         <service
             android:name=".Services.MyFirebaseInstanceService"

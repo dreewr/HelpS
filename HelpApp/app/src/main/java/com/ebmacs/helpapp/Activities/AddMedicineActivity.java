@@ -87,7 +87,9 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
     String name = null;
     String presentation = null;
-    String validity = null;
+
+
+    String validity = "TESTE_HARDCODED";//null;
 
     Bitmap fotos = null;
     String encoded = null;
@@ -114,6 +116,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medicine);
 
+        inflateViews();
 
         Date date = new Date();
         String strDateFormat = "hh:mm:ss a";
@@ -152,39 +155,6 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
                 });
 
 
-        editTextName = findViewById(R.id.editTextName);
-        editTextPresentation = findViewById(R.id.editTextApres);
-        editTextValidity = findViewById(R.id.editTextValidity);
-
-        editTextDose = findViewById(R.id.editTextDose);
-        editTextMg = findViewById(R.id.editTextMg);
-
-        editTextFotos = findViewById(R.id.editTextFoto);
-        editTextIndicationDays = findViewById(R.id.editTextIndicationdays);
-        editTextIndicationDaysHours = findViewById(R.id.editTextIndicationhours);
-        editTextMaufacturer = findViewById(R.id.editTextCompany);
-        editTexEANCOde = findViewById(R.id.editTextEAN);
-
-        editTextQuantDose = findViewById(R.id.editTextQuantDose);
-        editDescription = findViewById(R.id.editTextDescription);
-
-
-        image_calender = findViewById(R.id.icon_calnder);
-        imagScanner = findViewById(R.id.iconSCannerAdmedican);
-
-
-        editTextName.setHint("*Adicionar medicamento ");
-        editTextPresentation.setHint("Apresentação: Apresentação(MG)(opcional) ");
-        editTextValidity.setHint("*Data de validade ");
-        editTextFotos.setHint("Envie fotos de toda a caixa");
-        editTextMaufacturer.setHint("Fabricante/laboratório ");
-        editTexEANCOde.setHint("EAN: Códigode Barra(opcional)");
-        editDescription.setHint("Descrição: Princípio Ativo (opcional)");
-
-
-        btnShare = findViewById(R.id.btnShare);
-
-
         image_calender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -214,6 +184,40 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
     }
 
+    private void inflateViews(){
+
+        editTextName = findViewById(R.id.editTextName);
+        editTextPresentation = findViewById(R.id.editTextApres);
+        editTextValidity = findViewById(R.id.editTextValidity);
+
+        editTextDose = findViewById(R.id.editTextDose);
+        editTextMg = findViewById(R.id.editTextMg);
+
+        editTextFotos = findViewById(R.id.editTextFoto);
+        editTextIndicationDays = findViewById(R.id.editTextIndicationdays);
+        editTextIndicationDaysHours = findViewById(R.id.editTextIndicationhours);
+        editTextMaufacturer = findViewById(R.id.editTextCompany);
+        editTexEANCOde = findViewById(R.id.editTextEAN);
+
+        editTextQuantDose = findViewById(R.id.editTextQuantDose);
+        editDescription = findViewById(R.id.editTextDescription);
+
+
+        image_calender = findViewById(R.id.icon_calnder);
+        imagScanner = findViewById(R.id.iconSCannerAdmedican);
+
+
+        editTextName.setHint("*Adicionar medicamento ");
+        editTextPresentation.setHint("Apresentação: Apresentação(MG)(opcional) ");
+        editTextValidity.setHint("*Data de validade ");
+        editTextFotos.setHint("Envie fotos de toda a caixa");
+        editTextMaufacturer.setHint("Fabricante/laboratório ");
+        editTexEANCOde.setHint("EAN: Códigode Barra(opcional)");
+        editDescription.setHint("Descrição: Princípio Ativo (opcional)");
+
+        btnShare = findViewById(R.id.btnShare);
+
+    }
 
     @SuppressLint("WrongConstant")
     private void setPickSetUP() {
@@ -261,6 +265,8 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         }
 
 
+
+
         if (name == null || name.trim().equalsIgnoreCase("")) {
 
             editTextName.setHintTextColor(Color.parseColor("#ff0000"));
@@ -268,13 +274,13 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
         }
 
-
-        if (validity == null || validity.trim().equalsIgnoreCase("")) {
-
-            editTextValidity.setHintTextColor(Color.parseColor("#ff0000"));
-            allFilled = false;
-
-        }
+        //TODO: Descomentar
+//        if (validity == null || validity.trim().equalsIgnoreCase("")) {
+//
+//            editTextValidity.setHintTextColor(Color.parseColor("#ff0000"));
+//            allFilled = false;
+//
+//        }
 
 
         findViewById(android.R.id.content).invalidate();
@@ -447,7 +453,6 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
                 Map<String, String> params = new HashMap<>();
                 SharedPreferences preferences = getSharedPreferences("USER_DATA", MODE_PRIVATE);
                 String user_id = preferences.getString("user_id", "");
-
 
                 params.put("madicine_name", name);
                 params.put("madicine_description", description);
