@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             "Ao final do tratamento compartilhe o seu medicamento", "Ganhe pontos a cada ação executada",
             "Quando precisar busque medicamentos compartilhados próximo a você", "Conclua o compartihamento do medicamento via chat",
             "Receba alertas do vencimento do medicamentos", "Receba alertas da forma correta de descarte dos seus medicamentos",
-            "Troque seus pontos por benefícios exculsivos"));
+            "Troque seus pontos por benefícios exclusivos"));
 
 
     @Override
@@ -55,18 +55,9 @@ public class MainActivity extends AppCompatActivity {
         initializeViews();
         init();
 
-
         SharedPreferences prefs = getSharedPreferences("REFRESHED_TOKEN", MODE_PRIVATE);
         String restoredText = prefs.getString("mToken", null);
 
-        apiTest();
-
-    }
-
-    Repository repository = new Repository();
-    private MutableLiveData<Resource<List<Medicine>>> medicines= new MutableLiveData<>();
-    private void apiTest(){
-        medicines =  repository.getMedicine("7891058001155");
     }
 
     private void initializeViews() {

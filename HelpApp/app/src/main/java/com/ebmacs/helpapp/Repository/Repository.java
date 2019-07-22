@@ -27,11 +27,11 @@ import static com.ebmacs.helpapp.Repository.ResourceUtils.SUCCESS;
 
 public class Repository {
 
-        public MutableLiveData<Resource<List<Medicine>>> getMedicine(String gtinOrName) {
+        public MutableLiveData<Resource<Medicine>> getMedicine(String gtinOrName) {
 
-        MutableLiveData<Resource<List<Medicine>>> resourceData = new MutableLiveData<>();
+        MutableLiveData<Resource<Medicine>> resourceData = new MutableLiveData<>();
 
-        Resource<List<Medicine>> resource = new Resource<>(LOADING, null, null);
+        Resource<Medicine> resource = new Resource<>(LOADING, null, null);
 
         resourceData.setValue(resource);
 
@@ -43,7 +43,7 @@ public class Repository {
 
                         if (response.isSuccessful()&&response.body()!= null){
 
-                            resource.setData(response.body());//Resposta ok
+                            resource.setData(response.body().get(0));//Resposta ok
                             resource.setStatus(SUCCESS);
 
                         } else if (response.isSuccessful()&&response.body()== null){

@@ -238,7 +238,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
             <ImageView
-                android:id="@+id/iconSCannerAdmedican"
+                android:id="@+id/iconScannerAdmedican"
                 android:layout_width="45dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -15,16 +14,14 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Paint;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -46,21 +43,26 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ebmacs.helpapp.Models.Farmacino2;
+import com.ebmacs.helpapp.Models.Medicine;
 import com.ebmacs.helpapp.R;
+import com.ebmacs.helpapp.Repository.Resource;
+import com.ebmacs.helpapp.Repository.ResourceUtils;
+import com.ebmacs.helpapp.ViewModel.AddMedicineViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.enums.EPickType;
+//import androidx.lifecycle.ViewModelProviders;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -75,7 +77,6 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
     private FusedLocationProviderClient fusedLocationClient;
     private final String URL = "http://ebmacshost.com/help/api/upload_madicine";
     Uri uri;
-
     private int PICK_IMAGE_REQUEST = 1;
     EditText editTextName, editTextPresentation, editTextValidity,
             editTextFotos, editTextIndicationDays, editTextIndicationDaysHours, editTextMaufacturer,
@@ -83,29 +84,15 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
     ImageView image_calender, imagScanner;
 
 
+    AddMedicineViewModel viewModel;
     Button btnShare;
 
-    String name = null;
-    String presentation = null;
-
-
-    String validity = "TESTE_HARDCODED";//null;
+    String name, presentation, validity, encoded, ean, indicationDays,
+            indicationHours, manufacturer, medType, description, dose, mg, expireDate = null;
 
     Bitmap fotos = null;
-    String encoded = null;
-    String ean = null;
-    String indicationDays = null;
-    String indicationHours = null;
-    String manufacturer = null;
-    String medType = null;
-    String description = null;
-    String dose = null;
-    String mg = null;
-    String expireDate = null;
+    IntentIntegrator qrScan;
     int quantDose = 0;
-    boolean clicked = false;
-
-    Context mContext;
 
     PickSetup setup;
     String timeNow = "";
@@ -116,7 +103,13 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medicine);
 
+        viewModel = ViewModelProviders
+                .of(this).get(AddMedicineViewModel.class);
+        //Todo: trocar de hardcoded pra dinâmico baseado no id do usuário logad
+
         inflateViews();
+        initScanner();
+        initListeners();
 
         Date date = new Date();
         String strDateFormat = "hh:mm:ss a";
@@ -126,8 +119,19 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         setPickSetUP();
 
 
+
+        viewModel.medicine.observe(this, resource ->{
+
+            handleMedicineFetched(resource);
+
+        });
+
+
+
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    Activity#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -155,32 +159,22 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
                 });
 
 
-        image_calender.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                showCalenderDialog();
-            }
-        });
 
 
-      /*  editTexEANCOde.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-                startActivityForResult(new Intent(AddMedicineActivity.this,ScanQrActivity.class),233);
+    private void handleMedicineFetched(Resource<Medicine> resource){
 
-            }
-        });*/
+        Log.i("teste", "teste");
+        if (resource.getStatus().equals(ResourceUtils.SUCCESS)){
+            editTextName.setText(resource.getData().getNome());
+            Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT ).show();
+        } else if (resource.getStatus().equals(ResourceUtils.LOADING)){
+            Toast.makeText(this, "Carregando", Toast.LENGTH_SHORT ).show();
+        }else if (resource.getStatus().equals(ResourceUtils.ERROR)){
 
-        imagScanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivityForResult(new Intent(AddMedicineActivity.this, ScanQrActivity.class), 233);
-
-            }
-        });
-
+            Toast.makeText(this, "ERRO", Toast.LENGTH_SHORT ).show();
+        }
 
     }
 
@@ -204,7 +198,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
 
         image_calender = findViewById(R.id.icon_calnder);
-        imagScanner = findViewById(R.id.iconSCannerAdmedican);
+        imagScanner = findViewById(R.id.iconScannerAdmedican);
 
 
         editTextName.setHint("*Adicionar medicamento ");
@@ -217,6 +211,25 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
         btnShare = findViewById(R.id.btnShare);
 
+    }
+
+    private void initListeners(){
+        image_calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showCalenderDialog();
+            }
+        });
+        imagScanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // startActivityForResult(new Intent(AddMedicineActivity.this, ScanQrActivity.class), 233);
+                qrScan.initiateScan();
+
+            }
+        });
     }
 
     @SuppressLint("WrongConstant")
@@ -312,6 +325,16 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
     }
 
+    public void initScanner(){
+        qrScan = new IntentIntegrator(this).setBeepEnabled(false)
+                .setPrompt("Coloque o código QR na linha vermelha para escaneá-lo")
+                .setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+              //  .setTimeout(15000);
+//                .addExtra("USER_ID", userInfo.userID)
+//                .addExtra("USER_SALDO", userInfo.userBalance)
+//                .addExtra("USER_NAME", userInfo.userName)
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if (position == 0) {
@@ -375,12 +398,31 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+        if ( scanResult != null){
+            String barcode = scanResult.getContents();
+            if (barcode != null && !"".equals(barcode))
+            {
+                Log.i("Barcode", barcode);
+                viewModel.fetchMedicine(barcode);
+            }
+
+        }
+
         if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 0xC0DE) {
+                Log.i("","");
+
+                //Chama o viewModel
+                //String message = data.getStringExtra("code");
+                //editTexEANCOde.setText(message);
+            }
+
             if (requestCode == 233) {
                 String message = data.getStringExtra("code");
                 editTexEANCOde.setText(message);
@@ -399,7 +441,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
                         byte[] byteArray = byteArrayOutputStream.toByteArray();
                         encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
-                        Log.i("PHOTo in base 64", String.valueOf(encoded));
+                        Log.i("Photo in base 64", String.valueOf(encoded));
 
 
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -417,7 +459,6 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         }
 
     }
-
 
     ////////Upload Drugs
     private void uploadDrugs() {

@@ -33,7 +33,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ebmacs.helpapp.Dialogs.SharePointsDialog;
 import com.ebmacs.helpapp.Models.Farmacino2;
 import com.ebmacs.helpapp.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -151,7 +150,7 @@ public class EditMedicanActivity extends AppCompatActivity implements Validator.
         imageCamera = findViewById(R.id.image_came);
         image_calender = findViewById(R.id.icon_calnder);
         btnShare = findViewById(R.id.btnShare);
-        imageScanner = findViewById(R.id.iconSCannerAdmedican);
+        imageScanner = findViewById(R.id.iconScannerAdmedican);
         madicine_id = getIntent().getStringExtra("madicine_id");
     }
 
