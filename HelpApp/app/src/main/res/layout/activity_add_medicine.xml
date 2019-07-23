@@ -306,21 +306,41 @@
 
             </LinearLayout>
 
-
-            <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:theme="@style/TextLabel">
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/editTextCompany"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-            <LinearLayout
+                    android:id="@+id/inpt_layout"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        android:id="@+id/editTextCompany"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/inpt_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/icon_manufacturer"
+                    tools:srcCompat="@drawable/icon_calender"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    />
+
+            </LinearLayout>
+                 <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

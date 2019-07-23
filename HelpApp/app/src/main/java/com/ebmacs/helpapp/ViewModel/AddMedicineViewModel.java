@@ -12,9 +12,15 @@ public class AddMedicineViewModel extends ViewModel {
 
     Repository repository = new Repository();
 
-    public MutableLiveData<Resource<Medicine>> medicine = new MutableLiveData<>();
+    public MutableLiveData<Resource<Medicine>> medicine;
 
-    //Ver exemplo do post cod
+    public LiveData<Resource<Medicine>> getMedicine() {
+        if (medicine == null) {
+           medicine = new MutableLiveData<>();
+        }
+        return medicine;
+    }
+
     public void fetchMedicine(String code) {
 
         medicine = repository.getMedicine(code);

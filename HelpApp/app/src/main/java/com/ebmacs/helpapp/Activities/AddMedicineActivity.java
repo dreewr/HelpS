@@ -20,8 +20,8 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -47,12 +47,15 @@ import com.ebmacs.helpapp.Models.Medicine;
 import com.ebmacs.helpapp.R;
 import com.ebmacs.helpapp.Repository.Resource;
 import com.ebmacs.helpapp.Repository.ResourceUtils;
+import com.ebmacs.helpapp.Repository.RetrofitService;
+import com.ebmacs.helpapp.Repository.RetrofitServiceFactory;
 import com.ebmacs.helpapp.ViewModel.AddMedicineViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.enums.EPickType;
@@ -68,6 +71,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -80,8 +84,8 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
     private int PICK_IMAGE_REQUEST = 1;
     EditText editTextName, editTextPresentation, editTextValidity,
             editTextFotos, editTextIndicationDays, editTextIndicationDaysHours, editTextMaufacturer,
-            editTextQuantDose, editTexEANCOde, editDescription, editTextDose, editTextMg;
-    ImageView image_calender, imagScanner;
+            editTextQuantDose, editTexEANCOde, editTextDescription, editTextDose, editTextMg;
+    ImageView image_calender, imagScanner, imageManufacturer;
 
 
     AddMedicineViewModel viewModel;
@@ -103,13 +107,20 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medicine);
 
-        viewModel = ViewModelProviders
-                .of(this).get(AddMedicineViewModel.class);
-        //Todo: trocar de hardcoded pra dinâmico baseado no id do usuário logad
+
 
         inflateViews();
         initScanner();
         initListeners();
+
+//        viewModel = ViewModelProviders
+//                .of(this).get(AddMedicineViewModel.class);
+//
+//        viewModel.getMedicine().observe(this, resource ->{
+//
+//            handleMedicineFetched(resource);
+//
+//        });
 
         Date date = new Date();
         String strDateFormat = "hh:mm:ss a";
@@ -117,17 +128,6 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         timeNow = dateFormat.format(date);
 
         setPickSetUP();
-
-
-
-        viewModel.medicine.observe(this, resource ->{
-
-            handleMedicineFetched(resource);
-
-        });
-
-
-
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -158,9 +158,6 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
                     }
                 });
 
-
-
-
     }
 
     private void handleMedicineFetched(Resource<Medicine> resource){
@@ -168,6 +165,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         Log.i("teste", "teste");
         if (resource.getStatus().equals(ResourceUtils.SUCCESS)){
             editTextName.setText(resource.getData().getNome());
+
             Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT ).show();
         } else if (resource.getStatus().equals(ResourceUtils.LOADING)){
             Toast.makeText(this, "Carregando", Toast.LENGTH_SHORT ).show();
@@ -194,11 +192,12 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         editTexEANCOde = findViewById(R.id.editTextEAN);
 
         editTextQuantDose = findViewById(R.id.editTextQuantDose);
-        editDescription = findViewById(R.id.editTextDescription);
+        editTextDescription = findViewById(R.id.editTextDescription);
 
 
         image_calender = findViewById(R.id.icon_calnder);
         imagScanner = findViewById(R.id.iconScannerAdmedican);
+        imageManufacturer = findViewById(R.id.icon_manufacturer);
 
 
         editTextName.setHint("*Adicionar medicamento ");
@@ -207,7 +206,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         editTextFotos.setHint("Envie fotos de toda a caixa");
         editTextMaufacturer.setHint("Fabricante/laboratório ");
         editTexEANCOde.setHint("EAN: Códigode Barra(opcional)");
-        editDescription.setHint("Descrição: Princípio Ativo (opcional)");
+        editTextDescription.setHint("Descrição: Princípio Ativo (opcional)");
 
         btnShare = findViewById(R.id.btnShare);
 
@@ -228,10 +227,63 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
                 // startActivityForResult(new Intent(AddMedicineActivity.this, ScanQrActivity.class), 233);
                 qrScan.initiateScan();
 
+                //viewModel.fetchMedicine("7896004713366");
+//                getMedicine("7896004713366");
+//                editTexEANCOde.setText("7896004713366");
             }
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    private void updateMedicine(Medicine medicine){
+
+        Log.i("Update Medicine", "entrou");
+        editTextQuantDose.setText(medicine.getDoses());
+        editTextName.setText(medicine.getNome());
+        editTextMaufacturer.setText(medicine.getLaboratorio());
+        editTextPresentation.setText(medicine.getApresentacao());
+        editTextDescription.setText(medicine.getPrincipioAtivo());
+        Picasso.get().load(medicine.getLogoUrl()).into(imageManufacturer);
+
+    }
+    private void getMedicine(String barcode){
+
+        //Loading...
+        Toast.makeText(this, "Carregando...", Toast.LENGTH_SHORT).show();
+        RetrofitServiceFactory.createService(RetrofitService.class)
+                .getMedicine(barcode)
+                .enqueue(new Callback<List<Medicine>>() {
+                    @Override
+                    public void onResponse(Call<List<Medicine>> call, retrofit2.Response<List<Medicine>> response) {
+
+                        if (response.isSuccessful()&&response.body()!= null){
+
+                            updateMedicine(response.body().get(0));
+                            Log.i("getMedicine","Sucesso");
+                            //resource.setStatus(SUCCESS);
+
+                        } else if (response.isSuccessful()&&response.body()== null){
+                            Log.i("getMedicine","Vazio");
+                            //resource.setStatus(EMPTY);
+                        } else {
+                            Log.i("getMedicine","Erro");
+                            //resource.setStatus(ERROR);  //Erro inesperado
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Medicine>> call, Throwable t) {
+                        Log.i("getMedicine","Erro");
+                    }
+
+                });
+
+    }
     @SuppressLint("WrongConstant")
     private void setPickSetUP() {
 
@@ -256,7 +308,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         name = editTextName.getText().toString();
         presentation = editTextPresentation.getText().toString();
         validity = editTextValidity.getText().toString();
-        description = editDescription.getText().toString();
+        description = editTextDescription.getText().toString();
         ean = editTexEANCOde.getText().toString();
         indicationDays = editTextIndicationDays.getText().toString();
         indicationHours = editTextIndicationDaysHours.getText().toString();
@@ -270,32 +322,22 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
         boolean allFilled = true;
 
-
         if (name == null || name.trim().equalsIgnoreCase("")) {
 
-            editTextName.setHintTextColor(Color.parseColor("#ff0000"));
-            allFilled = false;
-        }
-
-
-
-
-        if (name == null || name.trim().equalsIgnoreCase("")) {
-
+            Toast.makeText(this, "Insira o nome do medicamento", Toast.LENGTH_SHORT).show();
             editTextName.setHintTextColor(Color.parseColor("#ff0000"));
             allFilled = false;
 
         }
 
-        //TODO: Descomentar
-//        if (validity == null || validity.trim().equalsIgnoreCase("")) {
-//
-//            editTextValidity.setHintTextColor(Color.parseColor("#ff0000"));
-//            allFilled = false;
-//
-//        }
+        if (validity == null || validity.trim().equalsIgnoreCase("")) {
 
+            Toast.makeText(this, "Insira a data de validade", Toast.LENGTH_SHORT).show();
+            editTextValidity.setHintTextColor(Color.parseColor("#ff0000"));
+            allFilled = false;
 
+        }
+        
         findViewById(android.R.id.content).invalidate();
 
         if (allFilled == true) {
@@ -409,7 +451,8 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
             if (barcode != null && !"".equals(barcode))
             {
                 Log.i("Barcode", barcode);
-                viewModel.fetchMedicine(barcode);
+                getMedicine(barcode);
+                editTexEANCOde.setText(barcode);
             }
 
         }

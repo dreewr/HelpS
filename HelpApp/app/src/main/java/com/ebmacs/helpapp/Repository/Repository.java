@@ -62,7 +62,7 @@ public class Repository {
 
                         resource.setData(null); //Erro inesperado
                         resource.setStatus(ERROR);
-                        resourceData.setValue(resource);
+                        resourceData.postValue(resource);
                     }
 
                 });
