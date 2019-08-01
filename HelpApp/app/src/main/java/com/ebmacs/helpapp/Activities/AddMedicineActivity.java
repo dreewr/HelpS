@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -89,7 +90,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
 
     AddMedicineViewModel viewModel;
-    Button btnShare;
+    Button btnShare, btnScan;
 
     String name, presentation, validity, encoded, ean, indicationDays,
             indicationHours, manufacturer, medType, description, dose, mg, expireDate = null;
@@ -113,19 +114,20 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         initScanner();
         initListeners();
 
-//        viewModel = ViewModelProviders
-//                .of(this).get(AddMedicineViewModel.class);
-//
-//        viewModel.getMedicine().observe(this, resource ->{
-//
-//            handleMedicineFetched(resource);
-//
-//        });
+        viewModel = ViewModelProviders
+                .of(this).get(AddMedicineViewModel.class);
 
         Date date = new Date();
         String strDateFormat = "hh:mm:ss a";
         DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
         timeNow = dateFormat.format(date);
+
+
+        if (viewModel.getMedicine().getValue()!=null)
+        {
+            Log.d("medicine","not null");
+            updateMedicine(viewModel.medicine.getValue());
+        }
 
         setPickSetUP();
 
@@ -209,6 +211,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         editTextDescription.setHint("Descrição: Princípio Ativo (opcional)");
 
         btnShare = findViewById(R.id.btnShare);
+        btnScan = findViewById(R.id.btnScan);
 
     }
 
@@ -220,7 +223,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
                 showCalenderDialog();
             }
         });
-        imagScanner.setOnClickListener(new View.OnClickListener() {
+        btnScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -242,6 +245,8 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
 
     private void updateMedicine(Medicine medicine){
 
+        //Atualizo o valor do viewModel
+        viewModel.medicine.setValue(medicine);
         Log.i("Update Medicine", "entrou");
         editTextQuantDose.setText(medicine.getDoses());
         editTextName.setText(medicine.getNome());
@@ -337,7 +342,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
             allFilled = false;
 
         }
-        
+
         findViewById(android.R.id.content).invalidate();
 
         if (allFilled == true) {

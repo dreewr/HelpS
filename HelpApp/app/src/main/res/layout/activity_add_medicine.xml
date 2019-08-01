@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:focusableInTouchMode="true"
+    android:orientation="vertical"
     tools:context=".Activities.AddMedicineActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -16,21 +16,19 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:titleTextColor="@color/white"
-            app:theme="@style/ToolbarColoredBackArrow"
             android:background="@color/logoColor"
-            >
+            app:theme="@style/ToolbarColoredBackArrow"
+            app:titleTextColor="@color/white">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:text="Adicionar"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:text="Adicionar"/>
+                android:textSize="18sp" />
 
         </androidx.appcompat.widget.Toolbar>
-
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -38,10 +36,26 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_margin="10dp"
-        android:textSize="12sp"
-        android:text="Campos marcados com * são obrigatórios"/>
+        android:gravity="center_horizontal"
+        android:text="Campos marcados com * são obrigatórios"
+        android:textSize="12sp" />
+
+    <!--//android:onClick="shareButton"-->
+    <Button
+
+        android:id="@+id/btnScan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/colorPrimary"
+        android:drawableEnd="@drawable/ic_barcode_24"
+        android:paddingRight="16dp"
+        android:text="Escanear código de Barras"
+        android:textColor="@color/white" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -82,6 +96,7 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_inputLayout"
                 android:layout_width="match_parent"
@@ -92,8 +107,8 @@
                     android:id="@+id/editTextDose"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:hint="@string/dose"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,8 +122,8 @@
                     android:id="@+id/editTextMg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:hint="Mg"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,34 +136,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:theme="@style/TextLabel"
-                    android:orientation="horizontal"
                     android:layout_weight="6"
-                    >
-
+                    android:orientation="horizontal"
+                    android:theme="@style/TextLabel">
 
 
                     <EditText
                         android:id="@+id/editTextValidity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
                         android:enabled="false"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
 
                         />
 
 
-
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <ImageView
                     android:id="@+id/icon_calnder"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/icon_calender"
                     android:onClick="PicPicture"
-                    android:layout_gravity="center"/>
+                    app:srcCompat="@drawable/icon_calender" />
 
 
             </LinearLayout>
@@ -169,10 +182,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -182,77 +191,80 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:onClick="PicPicture"
-                    android:theme="@style/TextLabel"
-                    android:orientation="horizontal"
                     android:layout_weight="6"
-                    >
-
+                    android:onClick="PicPicture"
+                    android:orientation="horizontal"
+                    android:theme="@style/TextLabel">
 
 
                     <EditText
                         android:id="@+id/editTextFoto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:editable="false"
                         android:onClick="PicPicture"
                         android:textColor="@color/black"
-                        android:editable="false"
                         android:textSize="16sp"
 
                         />
 
 
-
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <ImageView
 
                     android:layout_width="50dp"
                     android:layout_height="30dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/image_camera"
                     android:onClick="PicPicture"
-                    android:layout_gravity="center"/>
+                    app:srcCompat="@drawable/image_camera" />
 
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_weight="9"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:theme="@style/TextLabel">
-
-                <EditText
-                    android:id="@+id/editTextEAN"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:inputType="number"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <ImageView
-                android:id="@+id/iconScannerAdmedican"
-                android:layout_width="45dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:layout_marginTop="5dp"
-                app:srcCompat="@drawable/icon_scanner"
-                android:layout_gravity="right|bottom"/>
-        </LinearLayout>
-
+            <!--TODO: VER O QUE FAZER COM ESSE CARA-->
             <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="9"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        android:id="@+id/editTextEAN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/iconScannerAdmedican"
+                    android:layout_width="45dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|bottom"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/icon_scanner" />
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="9">
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -264,26 +276,26 @@
                         android:id="@+id/editTextIndicationdays"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
                         android:hint="Indicação:Posologias (Dias"
-                        android:textSize="16sp"
+                        android:inputType="number"
                         android:maxLength="2"
-                        android:inputType="number"/>
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <EditText
+                <EditText
 
-                        android:layout_width="0dp"
-                        android:gravity="center|bottom"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:hint="/"
-                        android:paddingBottom="10dp"
-                        android:background="@null"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center|bottom"
+                    android:hint="/"
+                    android:paddingBottom="10dp"
 
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
@@ -297,11 +309,11 @@
                         android:id="@+id/editTextIndicationhours"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:maxLength="3"
+                        android:hint="Horas)"
                         android:inputType="number"
-                        android:hint="Horas)"/>
+                        android:maxLength="3"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -312,8 +324,8 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
                     android:id="@+id/inpt_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_weight="5"
@@ -328,19 +340,19 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintStart_toEndOf="@+id/inpt_layout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:scaleType="fitCenter"
                     android:id="@+id/icon_manufacturer"
-                    tools:srcCompat="@drawable/icon_calender"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    />
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/inpt_layout"
+                    tools:srcCompat="@drawable/icon_calender" />
 
             </LinearLayout>
-                 <LinearLayout
+
+            <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -350,17 +362,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:theme="@style/TextLabel"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:theme="@style/TextLabel">
 
                     <EditText
                         android:id="@+id/editTextQuantDose"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:inputType="number"
                         android:hint="Quantidade Disponível"
-                        android:textSize="16sp"/>
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -373,7 +385,7 @@
                 android:background="@color/colorPrimary"
                 android:onClick="shareButton"
                 android:text="Compartilhar"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
 
         </LinearLayout>
