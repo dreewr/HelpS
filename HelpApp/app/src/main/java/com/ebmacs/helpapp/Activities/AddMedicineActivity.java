@@ -202,7 +202,7 @@ public class AddMedicineActivity extends AppCompatActivity implements AdapterVie
         imageManufacturer = findViewById(R.id.icon_manufacturer);
 
 
-        editTextName.setHint("*Adicionar medicamento ");
+        editTextName.setHint("*Nome do medicamento ");
         editTextPresentation.setHint("Apresentação: Apresentação(MG)(opcional) ");
         editTextValidity.setHint("*Data de validade ");
         editTextFotos.setHint("Envie fotos de toda a caixa");
